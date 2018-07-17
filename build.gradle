@@ -1,0 +1,135 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    compileSdkVersion 27
+
+  /* packagingOptions {
+        exclude 'lib/x86/libijksdl.so'
+        exclude 'lib/x86_64/libijksdl.so'
+        exclude 'lib/x86/libijkplayer.so'
+        exclude 'lib/x86_64/libijkplayer.so'
+        exclude 'lib/armeabi-v7a/libijkplayer.so'
+        exclude 'lib/x86/libijkffmpeg.so'
+        exclude 'lib/arm64-v8a/libijkplayer.so'
+        exclude 'lib/armeabi/libijkplayer.so'
+        exclude 'lib/arm64-v8a/libijkffmpeg.so'
+        exclude 'lib/armeabi-v7a/libijkffmpeg.so'
+        exclude 'lib/x86_64/libijkffmpeg.so'
+        exclude 'lib/armeabi/libijksdl.so'
+        exclude 'lib/arm64-v8a/libijksdl.so'
+        exclude 'lib/armeabi-v7a/libijksdl.so'
+        exclude 'lib/armeabi/libijkffmpeg.so'
+    }*/
+
+    defaultConfig {
+        applicationId "com.bawei.myvideo"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+      /* ndk {
+
+            //APP的build.gradle设置支持的SO库架构
+
+            abiFilters 'armeabi', 'armeabi-v7a', 'x86'
+        } */
+     /* sourceSets {
+            main {
+                jniLibs.srcDirs = ['libs']
+            }
+        }*/
+    }
+    buildTypes {
+        release {
+            minifyEnabled  false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+greendao {
+    schemaVersion 1//数据库版本号
+    daoPackage 'com.com.sky.downloader.greendao'//设置DaoMaster、DaoSession、Dao包名
+    targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
+    //targetGenDirTest：设置生成单元测试目录
+    //generateTests：设置自动生成单元测试用例
+}
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:design:27.1.1'
+    implementation 'com.android.support:appcompat-v7:27.1.1'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    //支持开场动画放大效果依赖
+    implementation 'cn.carbs.android:AutoZoomInImageView:1.0.0'
+    //
+    implementation 'com.hjm:BottomTabBar:1.1.1'
+    //静态图的依赖
+    implementation 'com.facebook.fresco:fresco:0.12.0'
+    // 支持 GIF 动图，需要添加
+    implementation 'com.facebook.fresco:animated-gif:0.12.0'
+    implementation 'com.android.support:support-v4:27.1.1'
+    //tablayout依赖问题
+   // implementation 'com.android.support:design:27+'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.13'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+    implementation 'com.android.support:recyclerview-v7:27.1.1'
+    //轮播
+    implementation 'com.youth.banner:banner:1.4.10'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
+    //xrecyclerview
+    implementation 'com.jcodecraeer:xrecyclerview:1.5.8'
+    //jiecao
+ //   implementation 'fm.jiecao:jiecaovideoplayer:5.5'
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    //富文本编辑器
+    compile 'com.huangdali:mricheditor:1.0.1'
+    compile 'com.mikepenz:iconics-core:2.8.2@aar'
+    //icon 图片库
+    //选择需要依赖的图标库
+    compile 'com.mikepenz:google-material-typeface:3.0.1.0.original@aar'
+    compile 'com.mikepenz:fontawesome-typeface:4.7.0.0@aar'
+    compile 'com.mikepenz:ionicons-typeface:2.0.1.2@aar'
+    implementation files('libs/umeng-common-1.5.1.jar')
+    implementation files('libs/umeng-debug-1.0.0.jar')
+    implementation files('libs/umeng-share-core-6.9.1.jar')
+    implementation files('libs/umeng-share-QQ-simplify-6.9.1.jar')
+    implementation files('libs/umeng-share-sina-simplify-6.9.1.jar')
+    implementation files('libs/umeng-share-wechat-simplify-6.9.1.jar')
+    implementation files('libs/umeng-sharetool-6.9.1.jar')
+    //万能alertdialog颜色
+    implementation 'com.afollestad.material-dialogs:commons:0.9.6.0'
+    implementation 'com.afollestad.material-dialogs:core:0.9.6.0'
+    //eventbus
+    compile 'de.greenrobot:eventbus:3.0.0-beta1'
+    implementation 'com.github.leifzhang:IjkLib:0.4.4'
+    //cardview
+    implementation 'com.github.mcxtzhang:ZLayoutManager:V1.1.0'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    //greendao
+    implementation 'org.greenrobot:greendao:3.2.2'
+    compile 'com.android.support:multidex:1.0.3'
+    //implementation 'cn.jzvd:jiaozivideoplayer:6.2.10'
+    implementation 'cn.jzvd:jiaozivideoplayer:6.2.9'
+    implementation 'fm.jiecao:jiecaovideoplayer:5.5.4'
+  /*   //完整版引入
+    implementation 'com.shuyu:GSYVideoPlayer:4.1.3'
+    implementation 'com.github.ctiao:DanmakuFlameMaster:0.9.25'
+    //   implementation 'com.github.ctiao:ndkbitmap-armv7a:0.9.21'
+    //compile 'com.zhy:okhttputils:2.6.2'*/
+
+}

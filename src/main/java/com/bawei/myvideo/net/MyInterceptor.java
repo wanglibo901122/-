@@ -1,0 +1,49 @@
+package com.bawei.myvideo.net;
+
+import java.io.IOException;
+
+import okhttp3.FormBody;
+import okhttp3.HttpUrl;
+import okhttp3.Interceptor;
+import okhttp3.Request;
+import okhttp3.Response;
+
+/**
+ * Created by 王利博 on 2018/6/19.
+ */
+
+
+public class MyInterceptor implements Interceptor {
+    @Override
+    public Response intercept(Chain chain) throws IOException {
+        Response response;
+        //区分是GET请求还是POST请求
+        Request originRequest = chain.request();
+        if ("GET".equals(originRequest.method())) {
+            HttpUrl httpUrl = originRequest.url()
+                    .newBuilder()
+                    .addQueryParameter("information", "null")
+                    .build();
+            Request request = new Request.Builder().url(httpUrl).build();
+            //发送请求
+            response = chain.proceed(request);
+        } else {
+            FormBody.Builder builder = new FormBody.Builder();
+
+            FormBody body = (FormBody) originRequest.body();
+            int size = body.size();
+            for (int i = 0; i < size; i++) {
+                builder.add(body.name(i), body.value(i));
+            }
+            builder.add("information", "null");
+            FormBody formBody = builder.build();
+            Request request = new Request.Builder()
+                    .url(originRequest.url())
+                    .post(formBody)
+                    .build();
+            response = chain.proceed(request);
+
+        }
+        return response;
+    }
+}

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.bawei.myvideo.net.ResideLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/residelayout"
+    tools:context="com.bawei.myvideo.ShowActivity">
+     <!--侧拉-->
+  <LinearLayout
+      android:id="@+id/line"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="@mipmap/bg_1"
+      android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+      >
+      <com.facebook.drawee.view.SimpleDraweeView
+          android:id="@+id/simp_gif"
+          android:layout_width="80dp"
+          android:layout_height="100dp"
+          fresco:actualImageScaleType="centerCrop"
+          android:layout_marginTop="40dp"
+          android:layout_marginLeft="30dp"
+          fresco:roundAsCircle="true" />
+
+      <TextView
+          android:layout_width="80dp"
+          android:layout_height="wrap_content"
+          android:gravity="center"
+          android:text="小闲猫"
+          android:id="@+id/name"
+          android:textColor="#fff"
+          android:layout_marginLeft="20dp"
+          android:layout_marginTop="20dp"/>
+      <ListView
+          android:id="@+id/menu"
+          android:layout_marginTop="30dp"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="25dp"
+           />
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_marginBottom="30dp"
+          android:layout_marginLeft="35dp"
+          android:orientation="horizontal">
+
+          <com.mikepenz.iconics.view.IconicsTextView
+              android:id="@+id/main_guanyu"
+              android:layout_width="60dp"
+              android:layout_height="wrap_content"
+              android:layout_gravity="bottom"
+              android:text="{faw_share} 关于"
+              android:textColor="#fff" />
+
+          <com.mikepenz.iconics.view.IconicsTextView
+              android:id="@+id/main_zhuti"
+              android:layout_width="60dp"
+              android:layout_height="wrap_content"
+              android:layout_gravity="bottom"
+              android:text="{faw_share} 主题"
+              android:layout_marginLeft="5dp"
+              android:textColor="#fff" />
+
+      </LinearLayout>
+
+  </LinearLayout>
+
+
+    <!--fragment-->
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/bg_colorful"
+        android:orientation="vertical">
+        <com.hjm.bottomtabbar.BottomTabBar
+            android:id="@+id/btb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </com.hjm.bottomtabbar.BottomTabBar>
+    </LinearLayout>
+</com.bawei.myvideo.net.ResideLayout>

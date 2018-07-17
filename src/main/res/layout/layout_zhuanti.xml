@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+     >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="专题"
+        android:padding="10dp"
+        android:textSize="20dp"
+        android:textColor="#f9f7f7"
+        android:layout_marginTop="10dp"
+        android:background="#01ffffff"
+        android:gravity="center"/>
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rv1"></android.support.v7.widget.RecyclerView>
+</ScrollView>
+</LinearLayout>
